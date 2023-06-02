@@ -3,7 +3,7 @@ var router = express.Router();
 const { getReview, postReview } = require("../controllers/review.controllers");
 
 /* GET reviews. */
-router.get("/", getReview);
+router.get("/:id", getReview);
 
 /* POST reviews. */
 router.post("/", postReview);

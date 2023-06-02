@@ -5,7 +5,7 @@ const fs = require("fs");
 const reviewControllers = {};
 
 reviewControllers.getReview = async (req, res, next) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   if (!id) {
     const err = new Error("required id");
