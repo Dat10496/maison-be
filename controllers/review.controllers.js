@@ -29,7 +29,8 @@ reviewControllers.getReview = async (req, res, next) => {
 };
 
 reviewControllers.postReview = async (req, res, next) => {
-  const { id, review } = req.body;
+  const { review } = req.body;
+  const { id } = req.params;
 
   if (!id || !review) {
     const err = new Error("required id or review");

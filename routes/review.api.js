@@ -6,6 +6,6 @@ const { getReview, postReview } = require("../controllers/review.controllers");
 router.get("/:id", getReview);
 
 /* POST reviews. */
-router.post("/", postReview);
+router.post("/:id", postReview);
 
 module.exports = router;
