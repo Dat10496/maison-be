@@ -4,8 +4,6 @@ const midjourneySharkCamp = require("../midjourney/midjourneySharkCamp");
 const midjourneyControllers = {};
 
 midjourneyControllers.generateImage = async (req, res, next) => {
-  console.log("first");
-
   try {
     const password = req.headers.tempopassword;
     const { prompt } = req.body;
