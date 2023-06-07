@@ -8,7 +8,7 @@ reviewControllers.getReview = async (req, res, next) => {
   const { id } = req.params;
 
   if (!id) {
-    res.status(401).json({ msg: "required id" });
+    return res.status(401).json({ msg: "required id" });
   }
 
   const { data } = JSON.parse(fs.readFileSync("maison.json", "utf-8"));
@@ -31,7 +31,7 @@ reviewControllers.postReview = async (req, res, next) => {
   const { id } = req.params;
 
   if (!id || !review) {
-    res.status.json({ msg: "require id or review field" });
+    return res.status(401).json({ msg: "require id or review field" });
   }
 
   let db = JSON.parse(fs.readFileSync("maison.json", "utf-8"));
@@ -41,13 +41,10 @@ reviewControllers.postReview = async (req, res, next) => {
   });
 
   if (targetIndex === -1) {
-    res.status(404).json({ msg: "house not found" });
+    return res.status(404).send({ msg: "house not found" });
   }
 
   db.data[targetIndex].review.push(review);
-  console.log(db);
-
-  //   db.data = data;
 
   fs.writeFileSync("maison.json", JSON.stringify(db));
 
