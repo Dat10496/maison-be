@@ -21,7 +21,7 @@ midjourneyControllers.generateImage = async (req, res, next) => {
       res.status(500).json({ message: "Internal Server Error", uri: "" });
     }
   } catch (error) {
-    console.log("ERROR", error);
+    console.log("GENERATE IMAGE ERROR", error);
   }
 };
 

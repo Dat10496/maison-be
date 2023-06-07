@@ -22,7 +22,7 @@ const midjourneySharkCamp = async (prompt) => {
 
     return msg?.uri;
   } catch (error) {
-    throw new Error(`Midjourney Error ${error} `);
+    throw Error(`Midjourney Error ${error}`);
   }
 };
 

@@ -8,9 +8,7 @@ reviewControllers.getReview = async (req, res, next) => {
   const { id } = req.params;
 
   if (!id) {
-    const err = new Error("required id");
-    err.statusCode = 401;
-    throw err;
+    res.status(401).json({ msg: "required id" });
   }
 
   const { data } = JSON.parse(fs.readFileSync("maison.json", "utf-8"));
@@ -33,9 +31,7 @@ reviewControllers.postReview = async (req, res, next) => {
   const { id } = req.params;
 
   if (!id || !review) {
-    const err = new Error("required id or review");
-    err.statusCode = 401;
-    throw err;
+    res.status.json({ msg: "require id or review field" });
   }
 
   let db = JSON.parse(fs.readFileSync("maison.json", "utf-8"));
@@ -45,9 +41,7 @@ reviewControllers.postReview = async (req, res, next) => {
   });
 
   if (targetIndex === -1) {
-    const err = new Error("House not found");
-    err.statusCode = 404;
-    throw err;
+    res.status(404).json({ msg: "house not found" });
   }
 
   db.data[targetIndex].review.push(review);
